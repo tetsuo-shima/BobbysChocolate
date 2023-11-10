@@ -22,7 +22,13 @@ class TestOrderProcessor(unittest.TestCase):
         expected = {'milk': 6, 'violet': 0, 'espresso': 0}
         self.assertEqual(OrderProcessor.process_order(order), expected)
 
-    def test_prcess_order_float(self):
+    def test_process_order_int_bonus(self):
+        order = {'type': 'milk', 'cash': 12, 'price': 2, 'ratio': 5}
+        expected = {'milk': 7, 'violet': 0, 'espresso': 0}
+        self.assertEqual(OrderProcessor.process_order(order, True),
+                         expected)
+
+    def test_process_order_float(self):
         order = {'type': 'milk', 'cash': 12.5, 'price': 2.0, 'ratio': 5.0}
         expected = {'milk': 6, 'violet': 0, 'espresso': 0}
         self.assertEqual(OrderProcessor.process_order(order), expected)
