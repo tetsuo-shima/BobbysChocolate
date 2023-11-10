@@ -28,6 +28,12 @@ class TestOrderProcessor(unittest.TestCase):
         self.assertEqual(OrderProcessor.process_order(order, True),
                          expected)
 
+    def test_process_order_float_bonus(self):
+        order = {'type': 'violet', 'cash': 13.4, 'price': 4, 'ratio': 1}
+        expected = {'milk': 0, 'violet': 6, 'espresso': 0}
+        self.assertEqual(OrderProcessor.process_order(order, True),
+                         expected)
+
     def test_process_order_float(self):
         order = {'type': 'milk', 'cash': 12.5, 'price': 2.0, 'ratio': 5.0}
         expected = {'milk': 6, 'violet': 0, 'espresso': 0}
