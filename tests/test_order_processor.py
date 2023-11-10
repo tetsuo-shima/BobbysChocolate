@@ -1,8 +1,7 @@
 import unittest
-from collections import OrderedDict
 from enum import Enum
 
-from order_processor import ChocolateType, OrderProcessor
+from order_processor import OrderProcessor
 
 
 class TestOrderProcessor(unittest.TestCase):
