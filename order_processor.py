@@ -9,17 +9,25 @@ class ChocolateType(Enum):
 
 class OrderProcessor:
     @staticmethod
-    def process_order(order: dict) -> dict:
-        order_sheet = {chocolate_type.name: 0 for chocolate_type in
-                       ChocolateType}
+    def create_order_sheet():
+        return {chocolate_type.name: 0 for chocolate_type in ChocolateType}
+
+    @staticmethod
+    def process_order(order: dict, bonus: bool = False) -> dict:
+        order_sheet = OrderProcessor.create_order_sheet()
 
         for key in order_sheet.keys():
             if key == order['type']:
-                order_sheet[key] = order['cash'] // order['price']
+                order_sheet[key] = OrderProcessor._calculate_quantity(order)
+            if bonus:
+                order_sheet['key'] = OrderProcessor.process_bonus(order)
 
         return order_sheet
 
-    def process_bonus(self, order, order_sheet):
-        pass
+    @staticmethod
+    def _calculate_quantity(order):
+        return order['cash'] // order['price']
 
-
+    @staticmethod
+    def process_bonus(order):
+        return OrderProcessor._calculate_quantity(order) // order['ratio']
