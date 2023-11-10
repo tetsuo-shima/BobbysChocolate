@@ -19,3 +19,7 @@ class OrderProcessor:
 
         return order_sheet
 
+    def process_bonus(self, order, order_sheet):
+        pass
+
+
