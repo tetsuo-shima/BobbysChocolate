@@ -9,8 +9,8 @@ class ChocolateType(Enum):
 
 class OrderProcessor:
     @staticmethod
-    def create_order_sheet():
-        return {chocolate_type.name: 0 for chocolate_type in ChocolateType}
+    def create_order_sheet(flavors=ChocolateType) -> dict:
+        return {flavor.name: 0 for flavor in flavors}
 
     @staticmethod
     def process_order(order: dict, bonus: bool = False) -> dict:
