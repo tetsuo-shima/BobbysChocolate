@@ -19,8 +19,8 @@ class OrderProcessor:
         for key in order_sheet.keys():
             if key == order['type']:
                 order_sheet[key] = OrderProcessor._calculate_quantity(order)
-            if bonus:
-                order_sheet['key'] = OrderProcessor.process_bonus(order)
+                if bonus:
+                    order_sheet[key] += OrderProcessor.process_bonus(order)
 
         return order_sheet
 
