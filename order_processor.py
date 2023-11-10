@@ -25,9 +25,9 @@ class OrderProcessor:
         return order_sheet
 
     @staticmethod
-    def _calculate_quantity(order):
+    def _calculate_quantity(order) -> int:
         return order['cash'] // order['price']
 
     @staticmethod
-    def process_bonus(order):
+    def process_bonus(order) -> int:
         return OrderProcessor._calculate_quantity(order) // order['ratio']
