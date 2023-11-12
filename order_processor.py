@@ -1,6 +1,6 @@
 from chocolate_type import ChocolateType
 
-
+#TODO: Delete this file after checking dependencies
 def create_order_sheet(flavors=ChocolateType) -> dict:
     return {flavor.name: 0 for flavor in flavors}
 
