@@ -8,7 +8,11 @@ def main():
         reports.append(processor(order))
 
     for report in reports:
-        print(report)
+        string = ''
+        for key, value in report.items():
+            string += f'{key} {value}, '
+        string = string[:-2]
+        print(string)
 
 
 
