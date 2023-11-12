@@ -1,16 +1,21 @@
-# This is a sample Python script.
+from data import load_orders, pair_processing
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def main():
+    order_pairs = pair_processing(load_orders())
+
+    reports = []
+    for order, processor in order_pairs:
+        reports.append(processor(order))
+
+    for report in reports:
+        print(report)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    main()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
