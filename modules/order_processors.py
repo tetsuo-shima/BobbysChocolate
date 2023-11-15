@@ -1,3 +1,5 @@
+"""order processing functions to be used depending on bonus promotion status and
+chocolate flavor"""
 from modules.chocolate_type import ChocolateType
 
 
@@ -13,8 +15,13 @@ def _process_bonus(order) -> int:
     return _calculate_quantity(order) // order['ratio']
 
 
-def process_regular_order(order, flavor=ChocolateType):
-    report = _create_blank_report(flavor)
+def process_regular_order(order, flavors=ChocolateType):
+    """
+    :param order: dictionary containing order data
+    :param flavors: enum containing chocolate flavors
+    :return: dictionary containing quantity report of processed order
+    """
+    report = _create_blank_report(flavors)
 
     for key in report.keys():
         if key == order['type']:
@@ -23,8 +30,13 @@ def process_regular_order(order, flavor=ChocolateType):
     return report
 
 
-def process_milk_order_with_bonus(order, flavor=ChocolateType):
-    report = _create_blank_report(flavor)
+def process_milk_order_with_bonus(order, flavors=ChocolateType):
+    """
+    :param order: dictionary containing order data
+    :param flavors: enum containing chocolate flavors
+    :return: dictionary containing quantity report of processed order
+    """
+    report = _create_blank_report(flavors)
 
     for key in report.keys():
         if key == order['type']:
@@ -34,8 +46,13 @@ def process_milk_order_with_bonus(order, flavor=ChocolateType):
     return report
 
 
-def process_violet_order_with_bonus(order, flavor=ChocolateType):
-    report = _create_blank_report(flavor)
+def process_violet_order_with_bonus(order, flavors=ChocolateType):
+    """
+    :param order: dictionary containing order data
+    :param flavors: enum containing chocolate flavors
+    :return: dictionary containing quantity report of processed order
+    """
+    report = _create_blank_report(flavors)
 
     for key in report.keys():
         if key == order['type']:
@@ -45,9 +62,14 @@ def process_violet_order_with_bonus(order, flavor=ChocolateType):
     return report
 
 
-def process_espresso_order_with_bonus(order, flavor=ChocolateType):
-    report = _create_blank_report(flavor)
-    bonus = report[flavor.milk.name] = _process_bonus(order)
+def process_espresso_order_with_bonus(order, flavors=ChocolateType):
+    """
+    :param order: dictionary containing order data
+    :param flavors: enum containing chocolate flavors
+    :return: dictionary containing quantity report of processed order
+    """
+    report = _create_blank_report(flavors)
+    bonus = report[flavors.milk.name] = _process_bonus(order)
 
     for key in report.keys():
         if key == order['type']:
@@ -56,8 +78,13 @@ def process_espresso_order_with_bonus(order, flavor=ChocolateType):
     return report
 
 
-def process_ruby_order_with_bonus(order, flavor=ChocolateType):
-    report = _create_blank_report(flavor)
+def process_ruby_order_with_bonus(order, flavors=ChocolateType):
+    """
+    :param order: dictionary containing order data
+    :param flavors: enum containing chocolate flavors
+    :return: dictionary containing quantity report of processed order
+    """
+    report = _create_blank_report(flavors)
     bonus = _process_bonus(order)
 
     for key in report.keys():
