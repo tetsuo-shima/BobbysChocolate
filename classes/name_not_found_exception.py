@@ -1,3 +1,6 @@
+"""when a flavor of chocolate isn't found in the chocolate, flavor enum this
+will stop the script"""
+
 class NameNotFoundException(Exception):
     """Triggered when a flavor of chocolate isn't found in the chocolate
     flavor enum"""
