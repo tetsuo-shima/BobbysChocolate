@@ -1,5 +1,7 @@
+"""matches order data and processing function for creation of named tuple"""
+import enum
 from collections import namedtuple
-
+from typing import List, Dict
 from classes.name_not_found_exception import NameNotFoundException
 from modules.chocolate_type import ChocolateType as Ct
 from resources.constants import BONUS_PROMOTION_ACTIVATED
@@ -20,7 +22,13 @@ processors = {
 OrderProcess = namedtuple('OrderProcess', 'data process')
 
 
-def match_processing(orders: list, flavors=Ct) -> list:
+def match_processing(orders: List[Dict], flavors: enum = Ct) -> (
+        List)[OrderProcess]:
+    """
+    :param orders: list of dictionaries containing order data
+    :param flavors: enum containing flavors
+    :return: list of namedtuples containing orders and processing functions
+    """
     order_process_list = []
     flavor_list = [flavor.name for flavor in flavors]
 
