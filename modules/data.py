@@ -1,4 +1,5 @@
-import copy
+""" functions to read in dictionaries from CSV"""
+
 from csv import DictReader
 from resources.constants import ORDER_FILE
 from typing import List, Dict
