@@ -1,14 +1,17 @@
 """ functions to read in dictionaries from CSV"""
-
+from typing import List, Dict
 from csv import DictReader
 from resources.constants import ORDER_FILE
-from typing import List, Dict
 
 
 def _read_csv(datafile: str = ORDER_FILE) -> List[dict]:
+    """
+    :param datafile: :param datafile: path to file to be read
+    :return: list of dictionaries representing lines in file; value in
+    key:value is a string
+    """
     with open(datafile, 'r') as file:
-        orders = [order for order in DictReader(file)]
-    return orders
+        return list(DictReader(file))
 
 
 def _cast_integers(orders: List[dict]) -> List[Dict]:
