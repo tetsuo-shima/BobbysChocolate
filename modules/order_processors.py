@@ -1,5 +1,4 @@
-from chocolate_type import ChocolateType
-from abc import ABC, abstractmethod
+from modules.chocolate_type import ChocolateType
 
 
 def _create_blank_report(flavors: ChocolateType) -> dict:
@@ -48,12 +47,11 @@ def process_violet_order_with_bonus(order, flavor=ChocolateType):
 
 def process_espresso_order_with_bonus(order, flavor=ChocolateType):
     report = _create_blank_report(flavor)
-    bonus = _process_bonus(order)
+    bonus = report[flavor.milk.name] = _process_bonus(order)
 
     for key in report.keys():
         if key == order['type']:
             report[key] = _calculate_quantity(order) + bonus
-    report['milk'] = bonus
 
     return report
 
