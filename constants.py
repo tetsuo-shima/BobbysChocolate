@@ -1,2 +1,0 @@
-ORDER_FILE = 'orders.csv'
-BONUS_PROMOTION_ACTIVATED = True
