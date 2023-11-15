@@ -19,8 +19,9 @@ processors = {
 }
 OrderProcess = namedtuple('OrderProcess', 'data process')
 
+
 def match_processing(orders: list, flavors=Ct) -> list:
-    processing_pairs = []
+    order_process_list = []
     flavor_list = [flavor.name for flavor in flavors]
 
     for order in orders:
@@ -33,6 +34,6 @@ def match_processing(orders: list, flavors=Ct) -> list:
         else:
             raise NameNotFoundException(order.type)
 
-        processing_pairs.append(OrderProcess(data=order, process=processor))
+        order_process_list.append(OrderProcess(data=order, process=processor))
 
-    return processing_pairs
+    return order_process_list
